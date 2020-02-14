@@ -280,7 +280,6 @@ public class ThemeBundle implements CustomizationOption<ThemeBundle> {
     public static class PreviewInfo {
         public final Typeface bodyFontFamily;
         public final Typeface headlineFontFamily;
-        public final String fontName;
         @ColorInt public final int colorAccentLight;
         @ColorInt public final int colorAccentDark;
         @ColorInt public final int colorPrimary;
@@ -290,12 +289,11 @@ public class ThemeBundle implements CustomizationOption<ThemeBundle> {
         public final List<Drawable> shapeAppIcons;
 
         private PreviewInfo(Context context, Typeface bodyFontFamily, Typeface headlineFontFamily,
-                String fontName, int colorAccentLight, int colorAccentDark, int colorPrimary,
+                int colorAccentLight, int colorAccentDark, int colorPrimary,
                 List<Drawable> icons, Drawable shapeDrawable,
                 @Nullable Asset wallpaperAsset, List<Drawable> shapeAppIcons) {
             this.bodyFontFamily = bodyFontFamily;
             this.headlineFontFamily = headlineFontFamily;
-            this.fontName = fontName;
             this.colorAccentLight = colorAccentLight;
             this.colorAccentDark = colorAccentDark;
             this.colorPrimary = colorPrimary;
@@ -327,7 +325,6 @@ public class ThemeBundle implements CustomizationOption<ThemeBundle> {
         protected String mTitle;
         private Typeface mBodyFontFamily;
         private Typeface mHeadlineFontFamily;
-        private String mFontName;
         @ColorInt private int mColorAccentLight = -1;
         @ColorInt private int mColorAccentDark = -1;
         @ColorInt private int mColorPrimary = -1;
@@ -370,7 +367,7 @@ public class ThemeBundle implements CustomizationOption<ThemeBundle> {
                     //  non-adaptive icons
                 }
             }
-            return new PreviewInfo(context, mBodyFontFamily, mHeadlineFontFamily, mFontName, mColorAccentLight,
+            return new PreviewInfo(context, mBodyFontFamily, mHeadlineFontFamily, mColorAccentLight,
                     mColorAccentDark, mColorPrimary, mIcons, shapeDrawable,
                     mWallpaperAsset, shapeIcons);
         }
@@ -395,11 +392,6 @@ public class ThemeBundle implements CustomizationOption<ThemeBundle> {
 
         public Builder setHeadlineFontFamily(@Nullable Typeface headlineFontFamily) {
             mHeadlineFontFamily = headlineFontFamily;
-            return this;
-        }
-
-        public Builder setFontName(@Nullable String fontName) {
-            mFontName = fontName;
             return this;
         }
 
