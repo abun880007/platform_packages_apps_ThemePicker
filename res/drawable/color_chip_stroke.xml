@@ -16,9 +16,11 @@
      limitations under the License.
 -->
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
-        android:shape="ring"
-        android:innerRadius="10dp"
-        android:thickness="8dp"
-        android:useLevel="false">
-    <solid android:color="@android:color/black"/>
+       android:shape="oval">
+    <size
+        android:width="@dimen/component_color_chip_size"
+        android:height="@dimen/component_color_chip_size" />
+    <stroke
+        android:color="@color/option_border_color"
+        android:width="@dimen/option_border_width" />
 </shape>

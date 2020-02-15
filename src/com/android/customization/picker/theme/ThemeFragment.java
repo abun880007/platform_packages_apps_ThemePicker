@@ -23,7 +23,6 @@ import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
-import android.graphics.Matrix;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
@@ -62,7 +61,6 @@ import com.android.customization.widget.OptionSelectorController;
 import com.android.customization.widget.PreviewPager;
 import com.android.wallpaper.R;
 import com.android.wallpaper.asset.Asset;
-import com.android.wallpaper.asset.Asset.CenterCropBitmapTask;
 import com.android.wallpaper.model.WallpaperInfo;
 import com.android.wallpaper.module.CurrentWallpaperInfoFactory;
 import com.android.wallpaper.module.InjectorProvider;
@@ -403,9 +401,6 @@ public class ThemeFragment extends ToolbarFragment {
                     title.setTypeface(previewInfo.headlineFontFamily);
                     TextView body = card.findViewById(R.id.font_card_body);
                     body.setTypeface(previewInfo.bodyFontFamily);
-                    TextView name = card.findViewById(R.id.font_card_body_name);
-                    name.setTypeface(previewInfo.bodyFontFamily);
-                    name.setText(previewInfo.fontName);
                     card.findViewById(R.id.font_card_divider).setBackgroundColor(accentColor);
                 }
             });
@@ -600,9 +595,7 @@ public class ThemeFragment extends ToolbarFragment {
                     if (wallpaperPreviewAsset != null) {
                         wallpaperPreviewAsset.decodeBitmap(
                                 targetWidth, targetHeight,
-                                bitmap -> new CenterCropBitmapTask(bitmap, view,
-                                        croppedBitmap -> setWallpaperBitmap(view, croppedBitmap))
-                                .execute());
+                                bitmap -> setWallpaperBitmap(view, bitmap));
                     }
                     view.removeOnLayoutChangeListener(this);
                 }
